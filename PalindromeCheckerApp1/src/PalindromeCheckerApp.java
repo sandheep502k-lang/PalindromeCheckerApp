@@ -1,29 +1,45 @@
+/**
+ * =====================================================
+ * MAIN CLASS – UseCase5PalindromeCheckerApp
+ * =====================================================
+ *
+ * Use Case 5: Stack-Based Palindrome Check
+ *
+ * Description:
+ * This class checks whether a string is a palindrome
+ * using a Stack data structure.
+ *
+ * @author Developer
+ * @version 5.0
+ */
+
+import java.util.Stack;
 
 public class PalindromeCheckerApp {
 
     /**
-     * Application entry point for UC4.
+     * Application entry point for UC5.
      * @param args Command-line arguments
      */
     public static void main(String[] args) {
 
         String input = "madam";
 
-        // Convert string to character array
-        char[] arr = input.toCharArray();
+        Stack<Character> stack = new Stack<>();
 
-        int start = 0;
-        int end = arr.length - 1;
+        // Push characters into stack
+        for (int i = 0; i < input.length(); i++) {
+            stack.push(input.charAt(i));
+        }
+
         boolean isPalindrome = true;
 
-        // Two-pointer comparison
-        while (start < end) {
-            if (arr[start] != arr[end]) {
+        // Pop and compare
+        for (int i = 0; i < input.length(); i++) {
+            if (input.charAt(i) != stack.pop()) {
                 isPalindrome = false;
                 break;
             }
-            start++;
-            end--;
         }
 
         if (isPalindrome) {
